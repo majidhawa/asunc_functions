@@ -1,0 +1,58 @@
+async function messageDelay(message, delayTime) {
+    await new Promise(resolve => setTimeout(resolve, delayTime));
+    console.log(message);
+  }
+  
+  messageDelay('Goodmorning', 7000)
+
+
+
+
+  async function getUserData(Ids) {
+    for (const id of Ids) {
+      const userData = await getUserData(id);
+      console.log(userData);
+    }
+  }
+  
+  getUserData(['01', '02', '03']);
+
+
+
+  async function performTask() {
+    try {
+      const result = await performTask();
+      console.log('Task completed successfully:', result);
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  }
+  
+  performTask();
+  
+
+  async function unstableTask(taskName, retries, failureProbability) {
+    let success = false;
+    let failureMessage = 'You have failed try again ';
+
+    for (let i = 0; i < retries; i++) {
+        try {
+            const result = await unstableTask(taskName, retries, failureProbability);
+            console.log(`Attempt ${i + 1}: ${result}`);
+            success = true;
+            break; 
+        } catch (error) {
+            console.log(`Attempt ${i + 1}: ${error}`);
+            failureMessage = error;
+        }
+    }
+
+    if (success) {
+        console.log(`${taskName} succeeded`);
+    } else {
+        console.log(`${taskName} failed after ${retries} attempts. ${failureMessage}`);
+    }
+}
+unstableTask("SampleTask", 3, 0.5);
+
+  
